@@ -10,6 +10,10 @@ galaxy_info:
     - name: Debian
       versions:
         - wheezy
+  categories:
+    - database
+    - database:nosql
+    - web
 
 dependencies:
   - { role: Ansibles.erlang, erlang-version: "{{ erlang_version }}"  }
