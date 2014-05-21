@@ -9,6 +9,7 @@ Tested for Ansible 1.4 and higher. Even if it has been developed for Debian syst
 ## Dependencies
 
 - [Ansibles.erlang](https://github.com/Ansibles/erlang)
+- [Ansibles.build-essential](https://github.com/Ansibles/build-essential)
 
 
 ## Installation
