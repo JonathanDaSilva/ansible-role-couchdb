@@ -5,17 +5,8 @@
   when: ansible_os_family == "Debian"
 
 - name: Setup CouchDB user
-  user: name=couchdb system=yes home=/var/lib/couchdb
+  user: name=couchdb state=present system=yes
   sudo: true
-
-- name: Add CouchDB mandatory directories
-  file: path={{ item }} state=directory owner=couchdb group=couchdb mode=0770
-  with_items:
-    - /usr/local/etc/couchdb
-    - /usr/local/lib/couchdb
-    - /usr/local/var/lib/couchdb
-    - /usr/local/var/log/couchdb
-    - /usr/local/var/run/couchdb
 
 - name: Download CouchDB
   get_url: url={{ couchdb_tarball_url }} dest={{ couchdb_tmp_dir }}{{ couchdb_file_name }}
@@ -35,5 +26,11 @@
 - name: Link CouchDB exec prog
   file: src=/usr/local/etc/init.d/couchdb dest=/etc/init.d/couchdb state=link
 
-- name: Enable and start CouchDB
-  service: name=couchdb enabled=yes state=started
+- name: Create or update CouchDB directories
+  file: path={{ item }} state=directory recurse=yes owner=couchdb group=couchdb mode=0770
+  with_items:
+    - /usr/local/etc/couchdb
+    - /usr/local/lib/couchdb
+    - /usr/local/var/lib/couchdb
+    - /usr/local/var/log/couchdb
+    - /usr/local/var/run/couchdb
