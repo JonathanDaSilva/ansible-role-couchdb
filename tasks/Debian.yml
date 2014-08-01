@@ -2,6 +2,7 @@
 # file: tasks/Debian.yml
 
 - name: Install CouchDB Debian dependencies
+  sudo: true
   apt: pkg={{ item }} state=present update_cache=yes
   with_items:
     - curl

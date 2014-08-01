@@ -22,6 +22,7 @@
   when: couchdb_install_method == "source" and couchdb_version_installed != "{{ couchdb_version }}"
 
 - name: Start CouchDB
+  sudo: true
   service: name=couchdb enabled=yes state=started
   when: couchdb_version_installed != "{{ couchdb_version }}"
 

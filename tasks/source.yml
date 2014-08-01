@@ -24,9 +24,11 @@
   sudo: true
 
 - name: Link CouchDB exec prog
+  sudo: true
   file: src=/usr/local/etc/init.d/couchdb dest=/etc/init.d/couchdb state=link
 
 - name: Create or update CouchDB directories
+  sudo: true
   file: path={{ item }} state=directory recurse=yes owner=couchdb group=couchdb mode=0770
   with_items:
     - /usr/local/etc/couchdb
