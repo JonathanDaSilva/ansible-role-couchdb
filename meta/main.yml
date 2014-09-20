@@ -16,5 +16,5 @@ galaxy_info:
     - web
 
 dependencies:
-  - { role: Ansibles.erlang, erlang-version: "{{ erlang_version }}"  }
-  - { role: Ansibles.build-essential }
+  - { role: ANXS.erlang, erlang-version: "{{ erlang_version }}"  }
+  - { role: ANXS.build-essential }
