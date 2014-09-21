@@ -26,5 +26,4 @@
   service: name=couchdb enabled=yes state=started
   when: couchdb_version_installed != "{{ couchdb_version }}"
 
-- name: Verifying that CouchDB runs
-  uri: url=http://127.0.0.1:5984/
+- wait_for: port=5984 delay=1
