@@ -14,7 +14,3 @@ galaxy_info:
     - database
     - database:nosql
     - web
-
-dependencies:
-  - { role: ANXS.erlang, erlang-version: "{{ erlang_version }}"  }
-  - { role: ANXS.build-essential }
