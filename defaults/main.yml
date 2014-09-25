@@ -1,8 +1,6 @@
 ---
 # file: defaults/main.yml
 
-erlang_version: "R16B03"
-
 couchdb_version: "1.5.0"
 couchdb_version_installed: 0 # used to compare requested version and installed
 couchdb_install_method: "source" # can be "package"
