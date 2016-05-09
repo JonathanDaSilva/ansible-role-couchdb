@@ -22,7 +22,7 @@
   when: couchdb_install_method == "source" and couchdb_version_installed != "{{ couchdb_version }}"
 
 - name: 'Set Configuration'
-  template: src=../templates/local.ini.j2 dest=/etc/couchdb/local.ini
+  template: src=../templates/local.ini.j2 dest=/usr/local/etc/couchdb/local.ini
 
 - name: Start CouchDB
   sudo: true
