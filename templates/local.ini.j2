@@ -1,0 +1,19 @@
+[couchdb]
+uuid = 82376fde17952a56df8518c06373b016
+
+[httpd]
+port = 5984
+bind_address = {{ couchdb_bind_adress }}
+
+[ssl]
+{% if couchdb_ssl == "true" %}
+cert_file = {{ couchdb_cert_file }}
+key_file =  {{ couchdb_key_file }}
+{% endif %}
+verify_ssl_certificates = false
+ssl_certificate_max_depth = 1
+
+[admins]
+{% for admin in couchdb_admins %}
+  {{ admin.name }} = {{ admin.pass }}
+{% endfor %}

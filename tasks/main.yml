@@ -7,7 +7,7 @@
   register: couchdb_response
 
 - name: Retrieve CouchDB version
-  set_fact: couchdb_version_installed="{{ (couchdb_response.content|from_json).version }}"
+  set_fact: couchdb_version_installed= "{{ (couchdb_response.content|from_json).version }}"
   when: couchdb_response|success
 
 - name: Stop CouchDB
@@ -20,6 +20,9 @@
 
 - include: source.yml
   when: couchdb_install_method == "source" and couchdb_version_installed != "{{ couchdb_version }}"
+
+- name: 'Set Configuration'
+  template: src=../templates/local.ini.j2 dest=/etc/couchdb/local.ini
 
 - name: Start CouchDB
   sudo: true
